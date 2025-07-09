@@ -1,0 +1,195 @@
+<!-- LOGIN PAGE -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <style>
+    a {
+      text-decoration: none;
+      color: black;
+      padding: 6px 12px;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .active {
+      color: #3d8361;
+      font-weight: bold;
+      pointer-events: none;
+    }
+
+    body {
+      font-family: 'Times New Roman', Times, serif;
+      background-color: #f9f9f9;
+      margin: 0;
+    }
+
+    .login-container {
+      max-width: 420px;
+      margin: 60px auto;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 30px 40px;
+    }
+
+    .login-container input[type="email"],
+    .login-container input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 5px;
+      margin-bottom: 20px;
+      border: 1px solid #bbb;
+      border-radius: 4px;
+    }
+
+    .login-container button {
+      padding: 10px 20px;
+      background-color: #3d8361;
+      color: white;
+      border: none;
+      width: 100%;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .login-container button:hover {
+      background-color: #55b888;
+    }
+
+    .login-container p {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .remember-me {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .remember-me input[type="checkbox"] {
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+
+    .remember-me label {
+      font-size: 16px;
+      cursor: pointer;
+      margin: 0;
+    }
+    .divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #ccc;
+}
+
+.divider span {
+  padding: 0 12px;
+  color: #555;
+  font-size: 14px;
+}
+
+.google-btn {
+  padding: 10px 20px;
+  background-color: #ffffff;
+  color: #333;
+  border: 1px solid #ccc;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.google-btn:hover {
+  background-color: #f7f7f7;
+  transform: scale(1.02);
+}
+
+
+    hr {
+      margin: 10px 10px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<div style="background-color:#f2f2f2; padding: 20px 0;">
+  <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 60px;">
+    <div><img src="logo_img.png" alt="Logo" style="height:50px;"></div>
+    <div style="flex-grow: 1; display: flex; justify-content: center;">
+      <input type="text" placeholder="Search books..."
+             style="width: 300px; padding: 8px; font-size: 16px; border:none; border-radius: 4px 0 0 4px;margin-right: 10px;">
+      <button type="button"
+              style="padding: 8px 16px; background-color: #3d8361; color: white; border: none; border-radius: 0 4px 4px 0; cursor: pointer;">
+        Search
+      </button>
+    </div>
+    <div style="text-align: right;">
+      <h2 style="margin: 0;">Astra</h2>
+      <p style="margin: 0;">Online Bookstore Portal</p>
+    </div>
+  </div>
+  <hr>
+  <div style="display: flex; justify-content: space-evenly; font-size: 18px;">
+    <a href="index.html">Home</a>
+    <a href="login.html" class="active">Login</a>
+    <a href="categories.html">Categories</a>
+    <a href="cart.html">Cart</a>
+    <a href="catalogue.html">Catalogue</a>
+  </div>
+</div>
+
+<!-- Login Box -->
+<div class="login-container">
+  <h2 style="margin-top: 0;">Login</h2>
+  <form action="index.html" method="get">
+    <label>Email:</label>
+    <input type="email" required>
+
+    <label>Password:</label>
+    <input type="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+           title="Password must be at least 8 characters, include a number, an uppercase and a lowercase letter.">
+
+    <div class="remember-me">
+      <input type="checkbox" id="remember" name="remember">
+      <label for="remember">Remember Me</label>
+    </div>
+
+    <button type="submit">Login</button>
+  </form>
+  <div class="divider">
+  <span>or</span>
+</div>
+
+<button class="google-btn">
+  <img src="google.png" alt="Google" style="height:18px; vertical-align:middle; margin-right:8px;">
+  Sign in with Google
+</button>
+
+  <p><a href="forgot-password.html">Forgot your password?</a></p>
+  <p>New user? <a href="registration.html">Register here</a></p>
+</div>
+
+</body>
+</html>

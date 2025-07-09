@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Checkout | Lifemaster Store</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f4f3f3;
+      font-family: 'Times New Roman', Times, serif;
+      color: #333;
+    }
+
+    .checkout-wrapper {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 40px;
+      background: white;
+      border-radius: 14px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      font-size: 32px;
+      color: #3d8361;
+      margin-bottom: 30px;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    .section {
+      margin-bottom: 30px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      margin-bottom: 18px;
+      color: #3d8361;
+    }
+
+    .address-box, .payment-option, .gift-code {
+      background: #f8f8f8;
+      padding: 16px 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .address-box p {
+      margin: 5px 0;
+      line-height: 1.5;
+      font-size: 16px;
+    }
+
+    .change-btn {
+      background: none;
+      color: #3d8361;
+      border: 1px solid #3d8361;
+      padding: 8px 18px;
+      border-radius: 22px;
+      margin-top: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    }
+
+    .change-btn:hover {
+      background-color: #3d8361;
+      color: white;
+      transform: scale(1.03);
+    }
+
+    .payment-option label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .payment-option input[type="radio"] {
+      margin-right: 12px;
+      transform: scale(1.2);
+    }
+
+    .gift-code {
+      display: flex;
+      gap: 10px;
+    }
+
+    .gift-code input {
+      flex: 1;
+      padding: 10px 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    .gift-code button {
+      padding: 10px 20px;
+      background-color: #3d8361;
+      border: none;
+      color: white;
+      border-radius: 22px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .gift-code button:hover {
+      background-color: #55b888;
+      transform: scale(1.03);
+    }
+
+    .continue-btn {
+      width: 100%;
+      padding: 14px 0;
+      background-color: #3d8361;
+      color: white;
+      font-size: 20px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      margin-top: 20px;
+    }
+
+    .continue-btn:hover {
+      background-color: #55b888;
+      transform: scale(1.02);
+    }
+
+    @media(max-width: 768px) {
+      .checkout-wrapper {
+        padding: 20px;
+        margin: 20px;
+      }
+
+      h1 {
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="checkout-wrapper">
+  <h1>Checkout</h1>
+
+  <div class="section">
+    <div class="section-title">Delivering to</div>
+    <div class="address-box">
+      <p><strong>Sujitha</strong></p>
+      <p>613, Singai Nagar, Vellalore Road</p>
+      <p>Singanallur, Coimbatore, Tamil Nadu</p>
+      <p>641005, India</p>
+    </div>
+    <button class="change-btn">Change Address</button>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Select a Payment Method</div>
+
+    <div class="payment-option">
+      <label><input type="radio" name="payment"> Amazon Pay UPI (Get up to ₹50 cashback)</label>
+      <label><input type="radio" name="payment"> Pay by any UPI App</label>
+      <label><input type="radio" name="payment"> Credit / Debit Card</label>
+      <label><input type="radio" name="payment"> Amazon Pay Balance (₹0.00, Add ₹457.90 to proceed)</label>
+      <label><input type="radio" name="payment"> Net Banking</label>
+      <label><input type="radio" name="payment"> Cash on Delivery / Pay on Delivery</label>
+    </div>
+
+    <div class="gift-code">
+      <input type="text" placeholder="Enter Gift Card or Promo Code">
+      <button>Apply</button>
+    </div>
+  </div>
+  
+
+  <button class="continue-btn">Continue</button>
+</div>
+
+</body>
+</html>

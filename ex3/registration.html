@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registration</title>
+  <style>
+    a {
+      text-decoration: none;
+      color: black;
+      padding: 6px 12px;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .active {
+      color: #3d8361;
+      font-weight: bold;
+      pointer-events: none;
+    }
+
+    /* New styles for the form container */
+    .register-container {
+      max-width: 480px;
+      margin: 60px auto;
+      background-color: #fff;
+      border:none;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 30px 40px;
+    }
+
+    .register-container input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 5px;
+      margin-bottom: 20px;
+      border: 1px solid #bbb;
+      border-radius: 4px;
+    }
+
+    .register-container button {
+      padding: 10px 20px;
+      background-color: #3d8361;
+      color: white;
+      border: none;
+      width: 100%;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .register-container button:hover {
+      background-color: #55b888;
+    }
+
+    .register-container p {
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body style="font-family: Times New Roman; background-color: #f9f9f9; margin: 0;">
+
+<!-- Original Header (Unchanged) -->
+<div style="background-color:#f2f2f2; padding: 20px 0;margin:0">
+  <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 60px; gap: 20px;">
+    <div>
+      <img src="logo_img.png" alt="Logo" style="height:50px;">
+    </div>
+    <div style="flex-grow: 1; display: flex; justify-content: center;">
+      <input type="text" placeholder="Search books..." 
+            style="width: 300px; padding: 8px; font-size: 16px; border:none; border-radius: 4px 0 0 4px;margin-right: 10px;">
+      <button type="button" 
+              style="padding: 8px 16px; background-color: #3d8361; color: white; border: none; border-radius: 0 4px 4px 0; cursor: pointer;">
+        Search
+      </button>
+    </div>
+    <div style="text-align: right;">
+      <h2 style="margin: 0;">Astra</h2>
+      <p style="margin: 0;">Online Bookstore Portal</p>
+    </div>
+  </div>
+
+  <hr style="margin: 10px 10px;">
+  <div style="display: flex; justify-content: space-evenly; padding: 0 80px; font-size: 18px;">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="login.html" class="nav-link">Login</a>
+    <a href="categories.html" class="nav-link">Categories</a>
+    <a href="cart.html" class="nav-link">Cart</a>
+    <a href="catalogue.html" class="nav-link">Catalogue</a>
+  </div>
+</div>
+
+<!-- ✅ Registration Form with Frame -->
+<!-- ✅ Registration Form with Constraints and Redirect -->
+<div class="register-container">
+  <h2 style="margin-top: 0;"> Register</h2>
+  <form action="login.html" method="get">
+    <label>Name:</label><br>
+    <input type="text" required>
+
+    <label>Email:</label><br>
+    <input type="email" required>
+
+    <label>Password:</label><br>
+    <input type="password"
+           required
+           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+           title="Password must be at least 8 characters, include a number, an uppercase and a lowercase letter.">
+
+    <button type="submit">Register</button>
+  </form>
+  <p>Already have an account? <a href="login.html">Login here</a></p>
+</div>
+
+
+</body>
+</html>
