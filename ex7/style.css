@@ -16,7 +16,7 @@ body {
 }
 
 #display {
-  width: 100%;
+  width: 95%;
   height: 60px;
   font-size: 32px;
   text-align: right;
@@ -30,7 +30,7 @@ body {
 
 .buttons {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 10px;
 }
 
@@ -53,8 +53,17 @@ button:hover {
   background-color: #1c8adb;
   color: white;
   grid-column: span 1;
+  height:220%
 }
 
 .equal:hover {
+  background-color: #1171b5;
+}
+.clear {
+  background-color: #1c8adb;
+  color: white;
+}
+
+.clear:hover {
   background-color: #1171b5;
 }

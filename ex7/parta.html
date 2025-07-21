@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Compare Two Numbers</title>
+  <style>
+    body {
+      background-color: #f4faff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    input[type="number"] {
+      padding: 10px;
+      margin: 10px;
+      width: 200px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #005fa3;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Compare Two Numbers</h2>
+    <input type="number" id="num1" placeholder="Enter first number">
+    <br>
+    <input type="number" id="num2" placeholder="Enter second number">
+    <br>
+    <button onclick="compareNumbers()">Compare</button>
+    <div class="result" id="output"></div>
+  </div>
+
+  <script>
+    function compareNumbers() {
+      let num1 = parseFloat(document.getElementById("num1").value);
+      let num2 = parseFloat(document.getElementById("num2").value);
+      let result = "";
+
+      if (isNaN(num1) || isNaN(num2)) {
+        result = "Please enter both numbers.";
+      } else if (num1 > num2) {
+        result = `The first number (${num1}) is greater than the second (${num2}).`;
+      } else if (num2 > num1) {
+        result = `The second number (${num2}) is greater than the first (${num1}).`;
+      } else {
+        result = "Both numbers are equal.";
+      }
+
+      document.getElementById("output").textContent = result;
+    }
+  </script>
+
+</body>
+</html>
