@@ -23,6 +23,17 @@
       background: white;
       border-radius: 14px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      display: flex;
+      gap: 40px;
+    }
+    .checkout-details {
+        flex: 2;
+    }
+    .order-summary {
+        flex: 1;
+        background-color: #f8f8f8;
+        padding: 20px;
+        border-radius: 8px;
     }
 
     h1 {
@@ -132,11 +143,24 @@
       background-color: #55b888;
       transform: scale(1.02);
     }
+    
+    .summary-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+    .summary-total {
+        border-top: 1px solid #ccc;
+        padding-top: 10px;
+        margin-top: 20px;
+        font-weight: bold;
+    }
 
     @media(max-width: 768px) {
       .checkout-wrapper {
         padding: 20px;
         margin: 20px;
+        flex-direction: column;
       }
 
       h1 {
@@ -148,40 +172,119 @@
 <body>
 
 <div class="checkout-wrapper">
-  <h1>Checkout</h1>
+  <div class="checkout-details">
+    <h1>Checkout</h1>
 
-  <div class="section">
-    <div class="section-title">Delivering to</div>
-    <div class="address-box">
-      <p><strong>Sujitha</strong></p>
-      <p>613, Singai Nagar, Vellalore Road</p>
-      <p>Singanallur, Coimbatore, Tamil Nadu</p>
-      <p>641005, India</p>
+    <div class="section">
+      <div class="section-title">Delivering to</div>
+      <div class="address-box">
+        <p><strong>Sujitha</strong></p>
+        <p>613, Singai Nagar, Vellalore Road</p>
+        <p>Singanallur, Coimbatore, Tamil Nadu</p>
+        <p>641005, India</p>
+      </div>
+      <button class="change-btn">Change Address</button>
     </div>
-    <button class="change-btn">Change Address</button>
+
+    <div class="section">
+      <div class="section-title">Select a Payment Method</div>
+
+      <div class="payment-option">
+        <label><input type="radio" name="payment"> Amazon Pay UPI (Get up to ₹50 cashback)</label>
+        <label><input type="radio" name="payment"> Pay by any UPI App</label>
+        <label><input type="radio" name="payment"> Credit / Debit Card</label>
+        <label><input type="radio" name="payment"> Amazon Pay Balance (₹0.00, Add ₹457.90 to proceed)</label>
+        <label><input type="radio" name="payment"> Net Banking</label>
+        <label><input type="radio" name="payment"> Cash on Delivery / Pay on Delivery</label>
+      </div>
+
+      <div class="gift-code">
+        <input type="text" id="promo-code-input" placeholder="Enter Gift Card or Promo Code">
+        <button id="promo-code-btn">Apply</button>
+      </div>
+    </div>
+    
+    <button class="continue-btn">Continue</button>
   </div>
 
-  <div class="section">
-    <div class="section-title">Select a Payment Method</div>
-
-    <div class="payment-option">
-      <label><input type="radio" name="payment"> Amazon Pay UPI (Get up to ₹50 cashback)</label>
-      <label><input type="radio" name="payment"> Pay by any UPI App</label>
-      <label><input type="radio" name="payment"> Credit / Debit Card</label>
-      <label><input type="radio" name="payment"> Amazon Pay Balance (₹0.00, Add ₹457.90 to proceed)</label>
-      <label><input type="radio" name="payment"> Net Banking</label>
-      <label><input type="radio" name="payment"> Cash on Delivery / Pay on Delivery</label>
+  <div class="order-summary">
+    <h2 class="section-title">Order Summary</h2>
+    <div id="summary-items-container">
+        <!-- Dynamic summary items here -->
     </div>
-
-    <div class="gift-code">
-      <input type="text" placeholder="Enter Gift Card or Promo Code">
-      <button>Apply</button>
+    <div id="discount-summary">
+        <!-- Discount info here -->
+    </div>
+    <div class="summary-item summary-total" id="summary-total-container">
+        <span>Total:</span>
+        <span id="summary-total-price">$0.00</span>
     </div>
   </div>
-  
-
-  <button class="continue-btn">Continue</button>
 </div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const summaryItemsContainer = document.getElementById('summary-items-container');
+        const summaryTotalPriceElement = document.getElementById('summary-total-price');
+        const discountSummaryContainer = document.getElementById('discount-summary');
+        const promoCodeBtn = document.getElementById('promo-code-btn');
+        const promoCodeInput = document.getElementById('promo-code-input');
+
+        function getCart() {
+            return JSON.parse(localStorage.getItem('bookCart')) || [];
+        }
+
+        function renderSummary(discount = 0) {
+            const cart = getCart();
+            summaryItemsContainer.innerHTML = '';
+            let subtotal = 0;
+
+            if (cart.length === 0) {
+                summaryItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+                summaryTotalPriceElement.textContent = '$0.00';
+                return;
+            }
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantityInCart;
+                subtotal += itemTotal;
+                summaryItemsContainer.innerHTML += `
+                    <div class="summary-item">
+                        <span>${item.quantityInCart} x ${item.title}</span>
+                        <span>$${itemTotal.toFixed(2)}</span>
+                    </div>
+                `;
+            });
+
+            const discountAmount = subtotal * (discount / 100);
+            const finalTotal = subtotal - discountAmount;
+            
+            summaryTotalPriceElement.textContent = `$${finalTotal.toFixed(2)}`;
+            
+            if (discount > 0) {
+                discountSummaryContainer.innerHTML = `
+                    <div class="summary-item"><span>Subtotal:</span> <span>$${subtotal.toFixed(2)}</span></div>
+                    <div class="summary-item" style="color: crimson;"><span>Discount (${discount}%):</span> <span>-$${discountAmount.toFixed(2)}</span></div>
+                `;
+            } else {
+                 discountSummaryContainer.innerHTML = `<div class="summary-item"><span>Subtotal:</span> <span>$${subtotal.toFixed(2)}</span></div>`;
+            }
+        }
+
+        promoCodeBtn.addEventListener('click', () => {
+            const promoCode = promoCodeInput.value.trim().toUpperCase();
+            let discount = 0;
+            if (promoCode === 'SUMMER25') {
+                discount = 25;
+                alert('25% discount applied!');
+            } else if (promoCode) {
+                alert('Invalid promo code.');
+            }
+            renderSummary(discount);
+        });
+
+        renderSummary(); // Initial render
+    });
+</script>
 </body>
 </html>
