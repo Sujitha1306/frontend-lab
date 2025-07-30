@@ -300,7 +300,7 @@ body {
      <div style="background-color:#f2f2f2; padding: 20px 0;margin:0">
       <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 60px; gap: 20px;">
         <div>
-          <img src="" alt="Logo" style="height:50px;">
+          <img src="logo_img.png" alt="Logo" style="height:50px;">
         </div>
         <div style="flex-grow: 1; display: flex; justify-content: center;">
           <input type="text" id="search-input" placeholder="Search books..." 
@@ -348,56 +348,18 @@ body {
         { title: 'The Name of the Wind', author: 'Patrick Rothfuss' },
         { title: 'Deep Work', author: 'Cal Newport' }
     ];
-
-    // Add a new book
     bookList.push({ title: 'Atomic Habits', author: 'James Clear' });
-
-    // Remove the first book
     bookList.shift();
-
-    // Sort the array alphabetically by title
     bookList.sort((a, b) => a.title.localeCompare(b.title));
-
     console.log("Modified and Sorted Book List:", bookList);
 
-    // --- Data Objects ---
-    const recommendedBooks = [
-        { id: 1, img: "", tag: { text: 'New', class: 'tag' }, title: 'The Name of the Wind', author: 'Patrick Rothfuss', price: 9, quantity: 5, rating: 5 },
-        { id: 2, img: "", tag: { text: 'New', class: 'tag' }, title: 'Pride and Prejudice', author: 'Jane Austen', price: 7, quantity: 8, rating: 4 },
-        { id: 3, img: "", tag: { text: 'New', class: 'tag' }, title: 'Deep Work', author: 'Cal Newport', price: 12, quantity: 3, rating: 5 },
-        { id: 4, img: "", tag: { text: '-5%', class: 'tag discount' }, title: 'Goodnight Moon', author: 'Margaret Wise Brown', price: 5, quantity: 10, rating: 3 },
-        { id: 5, img: "", tag: { text: '-10%', class: 'tag discount' }, title: 'The Silent Patient', author: 'Alex Michaelides', price: 10, quantity: 0, rating: 4 },
-        { id: 6, img: "", tag: { text: 'New', class: 'tag' }, title: 'Big Little Lies', author: 'Liane Moriarty', price: 9, quantity: 1, rating: 4 }
-    ];
-
-    const littleReaderBooks = [
-        { id: 7, img: "", tag: { text: 'New', class: 'tag' }, title: 'The Magic Adventures', author: 'Emily Thompson', price: 12, quantity: 4, rating: 4 },
-        { id: 8, img: "", tag: null, title: 'The Mystery of Pencil', author: 'Alex Carter', price: 7, quantity: 0, rating: 3 },
-        { id: 9, img: "", tag: { text: '-10%', class: 'tag discount' }, title: 'Professor Paws', author: 'David Robinson', price: 9, quantity: 6, rating: 5 },
-        { id: 10, img: "", tag: null, title: 'Gary & Jeffrey', author: 'Rex Wigtail', price: 13, quantity: 2, rating: 4 }
-    ];
-
-    const bestsellers = [
-        { id: 11, img: "", title: 'The Quantum Paradox', author: 'Daniel Lawson', price: 13, quantity: 5, rating: 5 },
-        { id: 12, img: "", title: 'Ravenswood Manor', author: 'Evelyn Sinclair', price: 9, quantity: 3, rating: 4 },
-        { id: 13, img: "", title: 'Watchmen', author: 'Harper Anderson', price: 22, quantity: 7, rating: 5 }
-    ];
-
-    const selfDevelopmentBooks = [
-        { id: 14, img: "", tag: null, title: 'Think Clearly', author: 'Rolf Dobelli', price: 15, quantity: 5, rating: 4 },
-        { id: 15, img: "", tag: { text: 'New', class: 'tag' }, title: 'Atomic Habits', author: 'James Clear', price: 18, quantity: 0, rating: 5 },
-        { id: 16, img: "", tag: null, title: 'Deep Work', author: 'Cal Newport', price: 14, quantity: 8, rating: 5 },
-        { id: 17, img: "", tag: null, title: 'Mindset', author: 'Carol Dweck', price: 17, quantity: 4, rating: 4 },
-        { id: 18, img: "", tag: null, title: 'The Power of Now', author: 'Eckhart Tolle', price: 16, quantity: 6, rating: 4 },
-        { id: 19, img: "", tag: null, title: 'Make Your Bed', author: 'William McRaven', price: 10, quantity: 10, rating: 3 }
-    ];
-    
-    const allBooks = [...recommendedBooks, ...littleReaderBooks, ...bestsellers, ...selfDevelopmentBooks];
+    // --- Global State & Constants ---
     const MAX_CART_ITEMS = 5;
     const mainContentContainer = document.getElementById('main-content');
+    let booksData = {}; // Will hold all categories from JSON
+    let allBooks = []; // Will hold a flattened list of all books
 
-    // --- Task Implementations ---
-
+    // --- Cart Functions ---
     function getCart() {
         return JSON.parse(localStorage.getItem('bookCart')) || [];
     }
@@ -407,7 +369,11 @@ body {
         updateCartDisplay();
     }
     
-    // Task 10: Search for a book by title and display results
+    function updateCartDisplay() {
+        document.getElementById('cart-count').innerText = getCart().length;
+    }
+
+    // --- Core Application Logic ---
     function searchBooks() {
         const searchTerm = document.getElementById('search-input').value.toLowerCase();
         if (!searchTerm) {
@@ -493,10 +459,6 @@ body {
             }
         }
     }
-    
-    function updateCartDisplay() {
-        document.getElementById('cart-count').innerText = getCart().length;
-    }
 
     function disableAllBuyButtons() {
         document.querySelectorAll('.buy-button').forEach(button => {
@@ -506,7 +468,6 @@ body {
     }
 
     // --- Rendering Functions ---
-
     function createRecommendationCard(book) {
         const tagHtml = book.tag ? `<div class="${book.tag.class}">${book.tag.text}</div>` : '';
         const isOutOfStock = book.quantity === 0;
@@ -591,6 +552,7 @@ body {
     }
 
     function renderHomePage() {
+        const { recommendedBooks, littleReaderBooks, bestsellers, selfDevelopmentBooks } = booksData;
         mainContentContainer.innerHTML = `
             <div class="hero" style="padding: 30px;background-color: white;">
                 <h2 style="color: #3d8361;">Welcome to Astra!</h2>
@@ -634,19 +596,48 @@ body {
         `;
     }
 
-
-    // --- DOM Injection ---
+    // --- Initialization ---
     document.addEventListener('DOMContentLoaded', () => {
-        updateCartDisplay(); // Update cart count on page load
-        renderHomePage(); // Render the initial page content
-        
-        document.getElementById('search-button').addEventListener('click', searchBooks);
-        document.getElementById('search-input').addEventListener('keyup', (event) => {
-            if (event.key === 'Enter') {
-                searchBooks();
-            }
-        });
+        // Show a loading message while we fetch data
+        mainContentContainer.innerHTML = '<p style="text-align:center; font-size: 18px; padding: 40px;">Loading books...</p>';
+
+        fetch('books.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Populate global variables with the data from JSON
+                booksData = data;
+                allBooks = [
+                    ...booksData.recommendedBooks,
+                    ...booksData.littleReaderBooks,
+                    ...booksData.bestsellers,
+                    ...booksData.selfDevelopmentBooks
+                ];
+
+                // Now that data is loaded, render the page and set up listeners
+                updateCartDisplay();
+                renderHomePage();
+                
+                document.getElementById('search-button').addEventListener('click', searchBooks);
+                document.getElementById('search-input').addEventListener('keyup', (event) => {
+                    if (event.key === 'Enter') {
+                        searchBooks();
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('Error loading book data:', error);
+                mainContentContainer.innerHTML = `<p style="text-align:center; color:red; font-size: 18px; padding: 40px;">Could not load book data. Please try again later.</p>`;
+            });
     });
+
+    // Make functions that are called by inline 'onclick' handlers globally available.
+    window.addToCart = addToCart;
+    window.toggleImageSize = toggleImageSize;
 </script>
 
 </body>

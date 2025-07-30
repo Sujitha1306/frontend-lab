@@ -1,0 +1,29 @@
+{
+  "recommendedBooks": [
+    { "id": 1, "img": "", "tag": { "text": "New", "class": "tag" }, "title": "The Name of the Wind", "author": "Patrick Rothfuss", "price": 9, "quantity": 5, "rating": 5 },
+    { "id": 2, "img": "", "tag": { "text": "New", "class": "tag" }, "title": "Pride and Prejudice", "author": "Jane Austen", "price": 7, "quantity": 8, "rating": 4 },
+    { "id": 3, "img": "", "tag": { "text": "New", "class": "tag" }, "title": "Deep Work", "author": "Cal Newport", "price": 12, "quantity": 3, "rating": 5 },
+    { "id": 4, "img": "", "tag": { "text": "-5%", "class": "tag discount" }, "title": "Goodnight Moon", "author": "Margaret Wise Brown", "price": 5, "quantity": 10, "rating": 3 },
+    { "id": 5, "img": "", "tag": { "text": "-10%", "class": "tag discount" }, "title": "The Silent Patient", "author": "Alex Michaelides", "price": 10, "quantity": 0, "rating": 4 },
+    { "id": 6, "img": "", "tag": { "text": "New", "class": "tag" }, "title": "Big Little Lies", "author": "Liane Moriarty", "price": 9, "quantity": 1, "rating": 4 }
+  ],
+  "littleReaderBooks": [
+    { "id": 7, "img": "", "tag": { "text": "New", "class": "tag" }, "title": "The Magic Adventures", "author": "Emily Thompson", "price": 12, "quantity": 4, "rating": 4 },
+    { "id": 8, "img": "", "tag": null, "title": "The Mystery of Pencil", "author": "Alex Carter", "price": 7, "quantity": 0, "rating": 3 },
+    { "id": 9, "img": "", "tag": { "text": "-10%", "class": "tag discount" }, "title": "Professor Paws", "author": "David Robinson", "price": 9, "quantity": 6, "rating": 5 },
+    { "id": 10, "img": "", "tag": null, "title": "Gary & Jeffrey", "author": "Rex Wigtail", "price": 13, "quantity": 2, "rating": 4 }
+  ],
+  "bestsellers": [
+    { "id": 11, "img": "", "title": "The Quantum Paradox", "author": "Daniel Lawson", "price": 13, "quantity": 5, "rating": 5 },
+    { "id": 12, "img": "", "title": "Ravenswood Manor", "author": "Evelyn Sinclair", "price": 9, "quantity": 3, "rating": 4 },
+    { "id": 13, "img": "", "title": "Watchmen", "author": "Harper Anderson", "price": 22, "quantity": 7, "rating": 5 }
+  ],
+  "selfDevelopmentBooks": [
+    { "id": 14, "img": "", "tag": null, "title": "Think Clearly", "author": "Rolf Dobelli", "price": 15, "quantity": 5, "rating": 4 },
+    { "id": 15, "img": "", "tag": { "text": "New", "class": "tag" }, "title": "Atomic Habits", "author": "James Clear", "price": 18, "quantity": 0, "rating": 5 },
+    { "id": 16, "img": "", "tag": null, "title": "Deep Work", "author": "Cal Newport", "price": 14, "quantity": 8, "rating": 5 },
+    { "id": 17, "img": "", "tag": null, "title": "Mindset", "author": "Carol Dweck", "price": 17, "quantity": 4, "rating": 4 },
+    { "id": 18, "img": "", "tag": null, "title": "The Power of Now", "author": "Eckhart Tolle", "price": 16, "quantity": 6, "rating": 4 },
+    { "id": 19, "img": "", "tag": null, "title": "Make Your Bed", "author": "William McRaven", "price": 10, "quantity": 10, "rating": 3 }
+  ]
+}

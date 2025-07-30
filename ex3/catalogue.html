@@ -27,21 +27,20 @@
     }
 
     .header {
-  background-color: #f2f2f2;
-  padding: 20px 0;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  
-}
-.section-title {
-  text-align: center;
-  font-size: 26px;
-  margin: 40px 0 20px;
-  color: #333;
-  scroll-margin-top: 180px; }
-
+      background-color: #f2f2f2;
+      padding: 20px 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 26px;
+      margin: 40px 0 20px;
+      color: #333;
+      scroll-margin-top: 180px; 
+    }
 
     .header-inner {
       display: flex;
@@ -74,52 +73,51 @@
     }
 
     .nav {
-    background-color: #f2f2f2;
-  display: flex;
-  justify-content: space-evenly;
-  padding: 15px 0;
-  font-size: 18px;
-}
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: space-evenly;
+      padding: 15px 0;
+      font-size: 18px;
+    }
 
-.nav a {
-  background-color: #f2f2f2;
-  color: black;
-  text-decoration: none;
-  padding: 10px 16px;
-  border-radius: 4px;
-  margin: 0 5px;
-  transition: background-color 0.3s ease;
-}
+    .nav a {
+      background-color: #f2f2f2;
+      color: black;
+      text-decoration: none;
+      padding: 10px 16px;
+      border-radius: 4px;
+      margin: 0 5px;
+      transition: background-color 0.3s ease;
+    }
 
-.nav a:hover {
-  background-color: #ddd;
-  color: black;
-}
+    .nav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
 
-.nav a.active {
-    background-color: #f2f2f2;
-  color: #3d8361;
-  font-weight: bold;
-  pointer-events: none;
-}
+    .nav a.active {
+        background-color: #f2f2f2;
+      color: #3d8361;
+      font-weight: bold;
+      pointer-events: none;
+    }
 
     .main-frame {
-  display: flex;
-  min-height: calc(100vh - 180px);
-  margin-top: 145px;
-}
+      display: flex;
+      min-height: calc(100vh - 180px);
+      margin-top: 145px;
+    }
 
     .sidebar {
-  width: 220px;
-  background: #f2f2f2;
-  padding: 20px;
-  box-shadow: 2px 0 5px rgba(0,0,0,0.05);
-  position: sticky;
-  top: 145px;
-  height: calc(100vh - 180px);
-  overflow-y: auto;
-}
-
+      width: 220px;
+      background: #f2f2f2;
+      padding: 20px;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 145px;
+      height: calc(100vh - 180px);
+      overflow-y: auto;
+    }
 
     .sidebar h3 {
       margin-top: 20;
@@ -147,13 +145,6 @@
       background-color: white;
     }
 
-    .section-title {
-      text-align: center;
-      font-size: 26px;
-      margin: 40px 0 20px;
-      color: #333;
-    }
-
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -162,69 +153,106 @@
     }
 
     .book-card {
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 16px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.book-card img.enlarged {
-    height: 280px;
-}
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 16px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
 
-.book-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  background-color: #eef2e6; /* subtle tint */
-}
+    .book-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      background-color: #eef2e6; /* subtle tint */
+    }
 
-.book-card img {
-  width: 100%;
-  height: 230px;
-  object-fit: cover;
-  border-radius: 6px;
-  margin-bottom: 12px;
-  transition: height 0.3s ease;
-}
+    /* --- Skeleton Loader Styles --- */
+    .image-container {
+      position: relative;
+      width: 100%;
+      height: 230px;
+      background-color: #e0e0e0;
+      border-radius: 6px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      transition: height 0.3s ease;
+    }
 
-.book-card h3 {
-  margin: 8px 0 4px;
-  font-size: 18px;
-  color: #333;
-}
+    .image-container.enlarged {
+      height: 280px;
+    }
 
-.book-card p {
-  margin: 2px 0;
-  color: #555;
-  font-size: 14px;
-}
+    .skeleton-animation {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      animation: skeleton-loading 1.5s infinite;
+    }
 
-.book-card button {
-  margin-top: 12px;
-  padding: 8px 16px;
-  background-color: #3d8361;
-  border: none;
-  color: white;
-  border-radius: 20px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-.book-card button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-    opacity: 0.6;
-}
+    @keyframes skeleton-loading {
+      0% {
+        transform: translateX(-150%);
+      }
+      100% {
+        transform: translateX(150%);
+      }
+    }
 
-.book-card button:hover {
-  background-color: #55b888;
-}
+    .book-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 0;
+      transition: opacity 0.5s ease-in-out;
+      opacity: 0; /* Initially hide the image */
+    }
 
+    .book-card img.loaded {
+      opacity: 1; /* Show when loaded */
+    }
+    /* --- End Skeleton Loader Styles --- */
+
+    .book-card h3 {
+      margin: 8px 0 4px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .book-card p {
+      margin: 2px 0;
+      color: #555;
+      font-size: 14px;
+    }
+
+    .book-card button {
+      margin-top: 12px;
+      padding: 8px 16px;
+      background-color: #3d8361;
+      border: none;
+      color: white;
+      border-radius: 20px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .book-card button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+        opacity: 0.6;
+    }
+
+    .book-card button:hover {
+      background-color: #55b888;
+    }
 
     .footer {
       background-color: #f1f1f1;
@@ -240,7 +268,7 @@
   <!-- Header -->
   <div class="header">
     <div class="header-inner">
-      <div><img src="" alt="Logo" style="height:50px;"></div>
+      <div><img src="logo_img.png" alt="Logo" style="height:50px;"></div>
       <div style="flex-grow: 1; display: flex; justify-content: center;">
         <input type="text" id="search-input" placeholder="Search books...">
         <button id="search-button">Search</button>
@@ -273,20 +301,7 @@
 
     <!-- Main Content -->
     <div class="content" id="main-content">
-      <h2 class="section-title" id="new">New Arrivals</h2>
-      <div class="grid" id="new-arrivals-grid">
-        <!-- Dynamic content here -->
-      </div>
-
-      <h2 class="section-title" id="bestsellers">Bestsellers</h2>
-      <div class="grid" id="bestsellers-grid">
-        <!-- Dynamic content here -->
-      </div>
-
-      <h2 class="section-title" id="all">All Books</h2>
-      <div class="grid" id="all-books-grid">
-        <!-- Dynamic content here -->
-      </div>
+      <!-- Dynamic content will be loaded here -->
     </div>
   </div>
 
@@ -294,22 +309,15 @@
   <div class="footer">
     &copy; 2025 Bookie - Online Bookstore | All rights reserved.
   </div>
-<script>
-    // --- Data Objects ---
-    const allBooks = [
-        { id: 1, category: 'new', img: "", title: 'Python Basics', author: 'John Doe', price: 29.99, quantity: 5, rating: 4 },
-        { id: 2, category: 'new', img: "", title: 'Machine Learning 101', author: 'Jane Smith', price: 34.95, quantity: 3, rating: 5 },
-        { id: 3, category: 'bestseller', img: "", title: 'Deep Learning', author: 'Ian Goodfellow', price: 45.00, quantity: 8, rating: 5 },
-        { id: 4, category: 'bestseller', img: "", title: 'Clean Code', author: 'Robert C. Martin', price: 39.50, quantity: 0, rating: 4 },
-        { id: 5, category: 'all', img: "", title: 'Java in Depth', author: 'Alex Green', price: 28.00, quantity: 10, rating: 3 },
-        { id: 6, category: 'all', img: "", title: 'Data Structures', author: 'Clara Nguyen', price: 25.00, quantity: 1, rating: 4 },
-        { id: 7, category: 'all', img: "", title: 'React Made Easy', author: 'Lee Chan', price: 32.75, quantity: 7, rating: 5 },
-        { id: 8, category: 'new', img: "", title: 'The Silent Patient', author: 'Alex Michaelides', price: 10, quantity: 0, rating: 4 },
-        { id: 9, category: 'bestseller', img: "", title: 'Atomic Habits', author: 'James Clear', price: 18, quantity: 12, rating: 5 }
-    ];
-    const MAX_CART_ITEMS = 5;
 
-    // --- Task Implementations ---
+<script>
+    // --- Global State & Constants ---
+    const MAX_CART_ITEMS = 5;
+    const mainContent = document.getElementById('main-content');
+    let booksData = {}; // Will hold all categories from JSON
+    let allBooks = []; // Will hold a flattened list of all books
+
+    // --- Cart Functions ---
     function getCart() {
         return JSON.parse(localStorage.getItem('bookCart')) || [];
     }
@@ -340,6 +348,7 @@
         }
     }
 
+    // --- Rendering Functions ---
     function generateStars(rating) {
         let stars = '';
         for (let i = 0; i < 5; i++) {
@@ -351,16 +360,25 @@
     function toggleImageSize(event) {
         const button = event.target;
         const card = button.closest('.book-card');
-        const img = card.querySelector('img');
-        img.classList.toggle('enlarged');
+        const container = card.querySelector('.image-container'); // Target container
+        container.classList.toggle('enlarged'); // Toggle class on container
     }
 
     function createBookCard(book) {
         const isOutOfStock = book.quantity === 0;
+        // Use a placeholder if book.img is empty.
+        const imgSrc = book.img || 'https://placehold.co/200x230/eef2e6/777?text=Book+Cover';
+        
         return `
             <div class="book-card">
                 <div>
-                    <img src="${book.img}" alt="${book.title}">
+                    <div class="image-container">
+                        <div class="skeleton-animation"></div>
+                        <img src="${imgSrc}" 
+                             alt="${book.title}" 
+                             onload="this.classList.add('loaded'); this.previousElementSibling.style.display='none';"
+                             onerror="this.onerror=null; this.src='https://placehold.co/200x230/eef2e6/cc0000?text=Image+Failed'; this.classList.add('loaded'); this.previousElementSibling.style.display='none';">
+                    </div>
                     <h3>${book.title}</h3>
                     <p>${book.author}</p>
                     <div style="font-size: 20px; color: #ffc107;">${generateStars(book.rating)}</div>
@@ -375,10 +393,30 @@
             </div>
         `;
     }
+    
+    function renderCatalogue() {
+        mainContent.innerHTML = `
+            <h2 class="section-title" id="new">New Arrivals</h2>
+            <div class="grid" id="new-arrivals-grid"></div>
+            <h2 class="section-title" id="bestsellers">Bestsellers</h2>
+            <div class="grid" id="bestsellers-grid"></div>
+            <h2 class="section-title" id="all">All Books</h2>
+            <div class="grid" id="all-books-grid"></div>
+        `;
 
+        const newArrivalsGrid = document.getElementById('new-arrivals-grid');
+        const bestsellersGrid = document.getElementById('bestsellers-grid');
+        const allBooksGrid = document.getElementById('all-books-grid');
+
+        // Use data from the fetched JSON
+        newArrivalsGrid.innerHTML = booksData.recommendedBooks.map(createBookCard).join('');
+        bestsellersGrid.innerHTML = booksData.bestsellers.map(createBookCard).join('');
+        allBooksGrid.innerHTML = allBooks.map(createBookCard).join('');
+    }
+
+    // --- Core Application Logic ---
     function searchBooks() {
         const searchTerm = document.getElementById('search-input').value.toLowerCase();
-        const mainContent = document.getElementById('main-content');
         
         if (!searchTerm) {
             renderCatalogue(); // If search is empty, show the original catalogue
@@ -414,64 +452,45 @@
         mainContent.appendChild(clearButton);
     }
 
-    function renderCatalogue() {
-        // Restore original HTML structure for the catalogue
-        document.getElementById('main-content').innerHTML = `
-            <h2 class="section-title" id="new">New Arrivals</h2>
-            <div class="grid" id="new-arrivals-grid"></div>
-            <h2 class="section-title" id="bestsellers">Bestsellers</h2>
-            <div class="grid" id="bestsellers-grid"></div>
-            <h2 class="section-title" id="all">All Books</h2>
-            <div class="grid" id="all-books-grid"></div>
-        `;
-
-        // Populate the grids
-        const newArrivalsGrid = document.getElementById('new-arrivals-grid');
-        const bestsellersGrid = document.getElementById('bestsellers-grid');
-        const allBooksGrid = document.getElementById('all-books-grid');
-
-        newArrivalsGrid.innerHTML = allBooks.filter(b => b.category === 'new').map(createBookCard).join('');
-        bestsellersGrid.innerHTML = allBooks.filter(b => b.category === 'bestseller').map(createBookCard).join('');
-        allBooksGrid.innerHTML = allBooks.map(createBookCard).join('');
-    }
-
-
+    // --- Initialization ---
     document.addEventListener('DOMContentLoaded', () => {
-        // Task 1: Create a book object and log its rating
-        let singleBook = {
-            title: "The Great Gatsby",
-            author: "F. Scott Fitzgerald",
-            price: 10.99,
-            inStock: true,
-            rating: 5
-        };
-        console.log("Single book rating:", singleBook.rating);
+        mainContent.innerHTML = '<p style="text-align:center; font-size: 18px; padding: 40px;">Loading catalogue...</p>';
 
-        // Task 2 & 4 & 13: Array manipulations
-        function arrayManipulationTasks() {
-            console.log("--- All Book Titles ---");
-            allBooks.forEach(book => console.log(book.title));
-            
-            console.log("\n--- Books Costing Less Than $30 ---");
-            const cheapBooks = allBooks.filter(book => book.price < 30);
-            cheapBooks.forEach(book => console.log(`${book.title} - $${book.price.toFixed(2)}`));
+        fetch('books.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                booksData = data;
+                allBooks = [
+                    ...data.recommendedBooks,
+                    ...data.littleReaderBooks,
+                    ...data.bestsellers,
+                    ...data.selfDevelopmentBooks
+                ];
+                
+                updateCartDisplay();
+                renderCatalogue();
 
-            // Create a copy for manipulation to not affect the page render
-            let titles = allBooks.map(b => b.title);
-            titles.push("A New Dawn"); // Add a book
-            console.log("\n--- Added a new book ---");
-            const removed = titles.shift(); // Remove the first
-            console.log(`Removed '${removed}'.`);
-            titles.sort(); // Sort alphabetically
-            console.log("Sorted titles:", titles);
-        }
-        
-        arrayManipulationTasks();
-        updateCartDisplay();
-        renderCatalogue();
-
-        document.getElementById('search-button').addEventListener('click', searchBooks);
+                document.getElementById('search-button').addEventListener('click', searchBooks);
+                document.getElementById('search-input').addEventListener('keyup', (event) => {
+                    if (event.key === 'Enter') {
+                        searchBooks();
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('Error loading book data:', error);
+                mainContent.innerHTML = `<p style="text-align:center; color:red; font-size: 18px; padding: 40px;">Could not load catalogue. Please try again later.</p>`;
+            });
     });
+
+    // Make functions globally available for inline event handlers
+    window.addToCart = addToCart;
+    window.toggleImageSize = toggleImageSize;
 </script>
 </body>
 </html>
