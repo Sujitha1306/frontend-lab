@@ -2,170 +2,59 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Login</title>
+  <title>Admin Panel - Bookstore</title>
   <style>
-    a {
-      text-decoration: none;
-      color: black;
-      padding: 6px 12px;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .active {
-      color: #3d8361;
-      font-weight: bold;
-      pointer-events: none;
-    }
-
-    body {
-      font-family: 'Times New Roman', Times, serif;
-      background-color: #f9f9f9;
-      margin: 0;
-    }
-
-    .login-container {
-      max-width: 420px;
-      margin: 60px auto;
-      background-color: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      padding: 30px 40px;
-    }
-
-    .login-container input[type="email"],
-    .login-container input[type="password"] {
-      width: 100%;
-      padding: 10px;
-      font-size: 16px;
-      margin-top: 5px;
-      margin-bottom: 20px;
-      border: 1px solid #bbb;
-      border-radius: 4px;
-      box-sizing: border-box;
-    }
-
-    .login-container button {
-      padding: 10px 20px;
+    body { margin: 0; background-color: #f5f5f5; font-family: 'Times New Roman', Times, serif; }
+    a { text-decoration: none; color: black; padding: 6px 12px; }
+    a:hover { text-decoration: underline; }
+    .active { color: #3d8361; font-weight: bold; pointer-events: none; }
+    .header { background-color: #f2f2f2; padding: 20px 0; }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 0 60px; gap: 20px; }
+    .nav { background-color: #f2f2f2; display: flex; justify-content: space-evenly; padding: 15px 0; font-size: 18px; }
+    .content { padding: 30px 60px; max-width: 1200px; margin: auto; }
+    button {
       background-color: #3d8361;
       color: white;
       border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 10px 0;
+      transition: background-color 0.3s;
       width: 100%;
-      font-size: 16px;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
     }
+    button:hover { background-color: #55b888; }
+    .btn-delete { background-color: #c0392b; }
+    .btn-delete:hover { background-color: #e74c3c; }
+    .btn-update { background-color: #2980b9; }
+    .btn-update:hover { background-color: #3498db; }
 
-    .login-container button:hover {
-      background-color: #55b888;
+    .login-container {
+        background-color: white;
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        margin-top: 30px;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
     }
+    .login-container input {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    .error-message { color: crimson; margin-bottom: 15px; }
 
-    .login-container p {
-      text-align: center;
-      margin-top: 10px;
-    }
-
-    .remember-me {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 20px;
-    }
-
-    .remember-me input[type="checkbox"] {
-      transform: scale(1.2);
-      cursor: pointer;
-    }
-
-    .remember-me label {
-      font-size: 16px;
-      cursor: pointer;
-      margin: 0;
-    }
-    .divider {
-      display: flex;
-      align-items: center;
-      text-align: center;
-      margin: 20px 0;
-    }
-
-    .divider::before,
-    .divider::after {
-      content: '';
-      flex: 1;
-      border-bottom: 1px solid #ccc;
-    }
-
-    .divider span {
-      padding: 0 12px;
-      color: #555;
-      font-size: 14px;
-    }
-
-    .google-btn {
-      padding: 10px 20px;
-      background-color: #ffffff;
-      color: #333;
-      border: 1px solid #ccc;
-      width: 100%;
-      font-size: 16px;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .google-btn:hover {
-      background-color: #f7f7f7;
-      transform: scale(1.02);
-    }
-    .nav {
-      background-color: #f2f2f2;
-      display: flex;
-      justify-content: space-evenly;
-      padding: 15px 0;
-      font-size: 18px;
-    }
-
-    .nav a {
-      background-color: #f2f2f2;
-      color: black;
-      text-decoration: none;
-      padding: 10px 16px;
-      border-radius: 4px;
-      margin: 0 5px;
-      transition: background-color 0.3s ease;
-    }
-
-    .nav a:hover {
-      background-color: #ddd;
-      color: black;
-    }
-
-    .nav a.active {
-      background-color: #f2f2f2;
-      color: #3d8361;
-      font-weight: bold;
-      pointer-events: none;
-    }
-
-    hr {
-      margin: 10px 10px;
-    }
-
-    /* Styles for Admin Panel */
+    /* New Admin Panel Layout */
     .admin-panel-layout {
         display: flex;
         gap: 30px;
         margin-top: 30px;
-        max-width: 1200px;
-        margin-left: auto;
-        margin-right: auto;
     }
     #sidebar {
         width: 300px;
@@ -197,6 +86,8 @@
         border-radius: 4px;
         box-sizing: border-box;
     }
+    
+    /* Book Card Styles */
     .book-card {
         background: white;
         border-radius: 10px;
@@ -224,75 +115,44 @@
         padding: 8px;
         display: inline-block;
     }
-    .btn-delete { background-color: #c0392b; }
-    .btn-delete:hover { background-color: #e74c3c; }
-    .btn-update { background-color: #2980b9; }
-    .btn-update:hover { background-color: #3498db; }
   </style>
 </head>
 <body>
 
-<!-- Header -->
-<div style="background-color:#f2f2f2; padding: 20px 0;">
-  <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 60px;">
-    <div><img src="logo_img.png" alt="Logo" style="height:50px;"></div>
-    <div style="flex-grow: 1; display: flex; justify-content: center;">
-      <input type="text" placeholder="Search books..."
-             style="width: 300px; padding: 8px; font-size: 16px; border:none; border-radius: 4px 0 0 4px;margin-right: 10px;">
-      <button type="button"
-              style="padding: 8px 16px; background-color: #3d8361; color: white; border: none; border-radius: 0 4px 4px 0; cursor: pointer;">
-        Search
-      </button>
-    </div>
-    <div style="text-align: right;">
-      <h2 style="margin: 0;">Astra</h2>
-      <p style="margin: 0;">Online Bookstore Portal</p>
-    </div>
-  </div>
-  <hr>
-  <div class="nav" style="display: flex; justify-content: space-evenly; font-size: 18px;">
-    <a href="index.html">Home</a>
-    <a href="login.html" class="active">Login</a>
-    <a href="categories.html">Categories</a>
-    <a href="cart.html">Cart</a>
-    <a href="catalogue.html">Catalogue</a>
-    <a href="offers.html">Offers</a>
-  </div>
-</div>
-
-<!-- Main Content Area -->
-<div id="main-content">
-    <!-- Login Box -->
-    <div class="login-container" id="login-container">
-      <h2 style="margin-top: 0;">Login</h2>
-      <form id="login-form">
-        <label>Email:</label>
-        <input type="email" id="email" required>
-
-        <label>Password:</label>
-        <input type="password" id="password" required>
-
-        <div class="remember-me">
-          <input type="checkbox" id="remember" name="remember">
-          <label for="remember">Remember Me</label>
-        </div>
-
-        <button type="submit">Login</button>
-      </form>
-      <div class="divider">
-        <span>or</span>
+  <!-- Header -->
+  <div class="header">
+    <div class="header-inner">
+      <div><img src="logo_img.png" alt="Logo" style="height:50px;"></div>
+      <div style="text-align: right;">
+        <h2 style="margin: 0;">Astra</h2>
+        <p style="margin: 0;">Online Bookstore Portal</p>
       </div>
+    </div>
+    <hr style="margin: 10px;">
+    <div class="nav">
+      <a href="index.html">Home</a>
+      <a href="login.html">Login</a>
+      <a href="catalogue.html">Catalogue</a>
+    </div>
+  </div>
 
-      <button class="google-btn">
-        <img src="google.png" alt="Google" style="height:18px; vertical-align:middle; margin-right:8px;">
-        Sign in with Google
-      </button>
-
-      <p><a href="forgot-password.html">Forgot your password?</a></p>
-      <p>New user? <a href="registration.html">Register here</a></p>
+  <!-- Main Content -->
+  <div class="content">
+    
+    <!-- Login Form -->
+    <div id="login-container" class="login-container">
+        <h1>Admin Login</h1>
+        <form id="login-form">
+            <div id="error-message" class="error-message" style="display: none;"></div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" required>
+            <button type="submit">Login</button>
+        </form>
     </div>
 
-    <!-- Admin Panel (Template, hidden by default) -->
+    <!-- Admin Panel (hidden by default) -->
     <div id="admin-panel" class="admin-panel-layout" style="display: none;">
         <div id="sidebar">
             <div id="form-container" class="form-container">
@@ -303,16 +163,15 @@
             <!-- Book cards will be injected here -->
         </div>
     </div>
-</div>
-
+  </div>
 
 <script>
     let allBooks = [];
-
-    const mainContent = document.getElementById('main-content');
+    
     const loginContainer = document.getElementById('login-container');
     const adminPanel = document.getElementById('admin-panel');
     const loginForm = document.getElementById('login-form');
+    const errorMessage = document.getElementById('error-message');
     const formContainer = document.getElementById('form-container');
     const bookDisplayArea = document.getElementById('book-display-area');
 
@@ -327,12 +186,12 @@
             adminPanel.style.display = 'flex';
             loadInitialData();
         } else {
-            // For any other credentials, redirect to the home page
-            window.location.href = 'index.html';
+            errorMessage.textContent = 'Invalid email or password.';
+            errorMessage.style.display = 'block';
         }
     });
 
-    // --- Core Admin Functions ---
+    // --- Core Functions ---
     async function loadInitialData() {
         try {
             const response = await fetch('books.json');
@@ -371,7 +230,7 @@
         });
     }
 
-    // --- Admin Form Display Functions ---
+    // --- Form Display Functions ---
     function showCreateForm() {
         formContainer.innerHTML = `
             <h3>Create New Book</h3>
@@ -416,11 +275,11 @@
             price: parseFloat(document.getElementById('price').value),
             quantity: parseInt(document.getElementById('quantity').value),
             img: document.getElementById('img').value,
-            rating: 0
+            rating: 0 // Default rating
         };
         allBooks.push(newBook);
         renderAllBooks();
-        event.target.reset();
+        event.target.reset(); // Clear the form
     }
 
     function updateBook(event) {
@@ -438,14 +297,14 @@
             img: document.getElementById('update-img').value
         };
         renderAllBooks();
-        showCreateForm();
+        showCreateForm(); // Switch back to create form after update
     }
 
     window.deleteBook = function(bookId) {
         if (confirm('Are you sure you want to delete this book?')) {
             allBooks = allBooks.filter(b => b.id !== bookId);
             renderAllBooks();
-            showCreateForm();
+            showCreateForm(); // Ensure create form is showing if an update was cancelled
         }
     }
 </script>
